@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Leaders</title>
+  <!-- Enlace a la fuente Montserrat -->
+  <link href="<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Marko+One&display=swap" rel="stylesheet">
+
+  <!-- Imagen de la pestana -->
+   <link rel="icon" href="Logo.png" />
+
+  <!-- Enlace a Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+  <!-- Enlace a AOS (Animate On Scroll) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+
+  <!-- Enlace a tu archivo de CSS -->
+  <link rel="stylesheet" href="style_informativa.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <!-- Enlace a Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+</head>
+<body>
+
+<div class="hojas-flotando">
+  <span class="hoja hoja1">🍃</span>
+  <span class="hoja hoja2">🌻</span>
+  <span class="hoja hoja3">🌿</span>
+</div>
+  <!-- HEADER -->
+  <!-- Encabezado superior con logo y nombre -->
+<header class="greenleaders-header" id="navbar">
+  <div class="logo-container">
+    <img src="prueba.png" alt="Logo Green leaders" class="logo-img" />
+    <img src="tipografia.png" alt="Green Mandai" class="logo-img" />
+  </div>
+</header>
+<nav class="greenlead-nav">
+  <ul class="green-list">
+    <li><a href="#problemas-green">Problemas</a></li>
+    <li><a href="#soluciones">Soluciones</a></li>
+    <li><a href="#funcionalidades">Funcionalidades</a></li>
+    <li><a href="#contenedor-monetiza">Monetización</a></li>
+    <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+  </ul>
+</nav>
+
+<!--GALERIA-->
+    <header class="header-gallery">
+        <div class="gallery-slide active" style="background-image: url('imagen1.webp');">
+            <div class="overlay active">
+                <h1>El problema es real</h1>
+                <p>Menos del 15% de los desechos en Panamá se reciclan. Es hora de cambiarlo.</p>
+            </div>
+        </div>
+        <div class="gallery-slide" style="background-image: url('imagen2.jpg');">
+            <div class="overlay">
+                <h1>Innovación verde</h1>
+                <p>Explora el planeta de una nueva manera: tours 360°, mapas ambientales y una IA que guía tu impacto real.</p>
+            </div>
+        </div>
+        <div class="gallery-slide" style="background-image: url('imagen3.jpeg');">
+            <div class="overlay">
+                <h1>La solución está aquí</h1>
+                <p>Green Leaders transforma la forma en que vivimos la sostenibilidad.</p>
+            </div>
+        </div>
+        <div class="gallery-slide" style="background-image: url('imagen4.jpeg');">
+            <div class="overlay">
+                <h1>De lo personal a lo colectivo</h1>
+                <p>Cada acción cuenta. Juntos convertimos pequeños pasos en grandes transformaciones.</p>
+            </div>
+        </div>
+        <div class="gallery-arrow prev">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </div>
+        
+        <div class="gallery-arrow next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </div>
+        
+        <div class="gallery-controls">
+            <div class="gallery-dot active" data-index="0"></div>
+            <div class="gallery-dot" data-index="1"></div>
+            <div class="gallery-dot" data-index="2"></div>
+            <div class="gallery-dot" data-index="3"></div>
+        </div>
+    </header>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.gallery-slide');
+            const overlays = document.querySelectorAll('.overlay');
+            const dots = document.querySelectorAll('.gallery-dot');
+            const prevButton = document.querySelector('.gallery-arrow.prev');
+            const nextButton = document.querySelector('.gallery-arrow.next');
+            let currentSlide = 0;
+            let slideInterval;
+            
+            // Función para mostrar el slide actual
+            function showSlide(index) {
+                // Ocultar todos los slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Desactivar todas las overlays
+                overlays.forEach(overlay => {
+                    overlay.classList.remove('active');
+                });
+                
+                // Desactivar todos los dots
+                dots.forEach(dot => {
+                    dot.classList.remove('active');
+                });
+                
+                // Mostrar el slide actual
+                slides[index].classList.add('active');
+                overlays[index].classList.add('active');
+                dots[index].classList.add('active');
+                currentSlide = index;
+            }
+            
+            // Función para avanzar al siguiente slide
+            function nextSlide() {
+                let next = currentSlide + 1;
+                if (next >= slides.length) {
+                    next = 0;
+                }
+                showSlide(next);
+            }
+            
+            // Función para ir al slide anterior
+            function prevSlide() {
+                let prev = currentSlide - 1;
+                if (prev < 0) {
+                    prev = slides.length - 1;
+                }
+                showSlide(prev);
+            }
+            
+            // Configurar el intervalo para cambiar las imágenes automáticamente
+            function startSlideshow() {
+                slideInterval = setInterval(nextSlide, 5000); // Cambia cada 5 segundos
+            }
+            
+            // Detener el slideshow
+            function stopSlideshow() {
+                clearInterval(slideInterval);
+            }
+            
+            // Event listeners para los dots
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const slideIndex = parseInt(this.getAttribute('data-index'));
+                    showSlide(slideIndex);
+                    stopSlideshow();
+                    startSlideshow();
+                });
+            });
+            
+            // Event listeners para los botones de navegación
+            prevButton.addEventListener('click', function() {
+                prevSlide();
+                stopSlideshow();
+                startSlideshow();
+            });
+            
+            nextButton.addEventListener('click', function() {
+                nextSlide();
+                stopSlideshow();
+                startSlideshow();
+            });
+            
+            // Iniciar el slideshow
+            startSlideshow();
+        });
+    </script>
+
+<script>
+  document.querySelector('.menu-icon').addEventListener('click', function() {
+    toggleSidebar();
+  });
+</script>
+
+<!--MARQUEE-->
+    <div class="marquee-container">
+        <div class="marquee">
+            <div class="marquee-content">
+                <i class="fa-brands fa-pagelines"></i>Cada acción cuenta. Únete a la revolución verde. Pequeñas decisiones hoy, grandes cambios mañana.
+            </div>
+        </div>
+    </div>
+
+
+<!-- Barra lateral -->
+ <div class="sidebar" id="sidebar" >
+  <div class="contenedor-close-boton">
+    <div class="close-btn" onclick="toggleSidebar()">
+      <i class="fas fa-times"></i> <!-- Icono X de Font Awesome -->
+    </div>
+  </div>
+
+<div class="profile-section">
+  <img src="icono_usuario.webp" alt="Imagen de perfil" id="profile-img"> <!--imagen predeterminada de perfil-->
+  
+  <label for="profile-upload" class="upload-btn">Cambiar imagen</label>
+  <input type="file" id="profile-upload" accept="image/*" onchange="changeProfileImage()" />
+  
+  <p id="user-account">Cuenta: <span id="account-name"></span></p>
+</div>
+
+<ul class="sidebar-menu">
+  <li><a href="http://localhost/EXPO_2025/Pagina_principal2025/politicas/politicas.html">Políticas de privacidad</a></li>
+  <li><a href="http://localhost/EXPO_2025/Pagina_principal2025/mas_info/mas_informacion.html">Más información</a></li>
+  <li><a href="http://localhost/EXPO_2025/Pagina_principal2025/service/service.html">Servicio</a></li>
+  <li><a href="">Registrarse / Iniciar sesión</a></li>
+  <li><a href="#" onclick="cerrarSesion()">Cerrar sesión</a></li>
+  <li><a href="#" onclick="history.back(); return false;">Volver</a></li>
+
+</ul>
+</div>
+
+<script>
+function toggleSidebar() {
+  document.getElementById("sidebar").classList.toggle("active");
+}
+
+function changeProfileImage() {
+  const fileInput = document.getElementById("profile-upload");
+  const file = fileInput.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      document.getElementById("profile-img").src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function cerrarSesion() {
+  alert("Has cerrado sesión exitosamente.");
+  // Aquí puedes redirigir o limpiar datos si usas un backend
+  window.location.href = "c:\\Users\\HP\\Documents\\Pagina principal ´25\\index.html"; // redirige al inicio
+}
+
+</script>
+<!--fin de la barra lateral-->
+  <!-- Comienzo de la informacion general de la pagina -->
+<br>
+<!--cuerpo de la pagina------------------------------------------------------------------------------------------------------------------------------->
+<!-- Sección de Problemas Ambientales -->
+<div id="problemas-green" class="bg-white py-12 px-6 relative">
+
+  <!-- Botón arriba a la derecha con FontAwesome -->
+    <a href="#navbar" 
+      class="absolute top-10 right-6 text-2xl font-bold text-white 
+              px-3 py-1 rounded-full shadow-md hover:brightness-110 transition"
+      style="background-color: #7b6f58;">
+      ^
+    </a>
+
+
+  <div class="max-w-6xl mx-auto text-center mb-10">
+    <h2 class="text-5xl font-bold" style="font-family: 'Marko One', sans-serif; color: #5b4a2f;">
+      Problemas Enfrentados
+    </h2>
+    <p class="text-sm mt-2" style="font-family: 'Poppins', sans-serif; color: #444;">
+      Principales retos que enfrentamos hoy en Panamá y la región.
+    </p>
+  </div>
+
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+
+    <!-- Problema 1 -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center transition-transform duration-300 transform hover:scale-105 hover:shadow-2xl">
+      <i class="fas fa-trash-alt text-black text-6xl mb-4"></i>
+      <h3 class="text-2xl font-bold mb-2 text-center" style="font-family: 'Marko One', sans-serif; color: #2a3c4a;">
+        Contaminación e inacción
+      </h3>
+      <p class="text-sm leading-relaxed text-center" style="font-family: 'Poppins', sans-serif; color: #2f2f2f;">
+        - Residuos visibles como bolsas, botellas y aguas contaminadas.<br>
+        - Menos del 15% de los desechos se reciclan en Panamá.<br>
+        - La falta de acción se ha vuelto costumbre.
+      </p>
+    </div>
+
+    <!-- Problema 2 -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center transition-transform duration-300 transform hover:scale-105 hover:shadow-2xl">
+      <i class="fas fa-leaf text-black text-6xl mb-4"></i>
+      <h3 class="text-2xl font-bold mb-2 text-center" style="font-family: 'Marko One', sans-serif; color: #2a3c4a;">
+        Desconexión con la naturaleza
+      </h3>
+      <p class="text-sm leading-relaxed text-center" style="font-family: 'Poppins', sans-serif; color: #2f2f2f;">
+        - La vida urbana aleja a las personas del entorno natural.<br>
+        - Falta de comunidad y colaboración ambiental.<br>
+        - Millones en redes sociales, pero poca acción real.
+      </p>
+    </div>
+
+    <!-- Problema 3 -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center transition-transform duration-300 transform hover:scale-105 hover:shadow-2xl">
+      <i class="fas fa-universal-access text-black text-6xl mb-4"></i>
+      <h3 class="text-2xl font-bold mb-2 text-center" style="font-family: 'Marko One', sans-serif; color: #2a3c4a;">
+        Falta de acceso y comprensión
+      </h3>
+      <p class="text-sm leading-relaxed text-center" style="font-family: 'Poppins', sans-serif; color: #2f2f2f;">
+        - Información ambiental compleja y técnica.<br>
+        - Escasez de espacios accesibles para personas con discapacidades.<br>
+        - Pocas plataformas que conviertan conocimiento en acción.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!-- Sección proposito -->
+<section class="se-parte-de py-12">
+  <div class="container mx-auto px-4">
+    
+    <!-- Contenedor principal en dos columnas -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <!-- Columna izquierda: párrafo explicativo (ocupando 2/3) -->
+<div id="proposito" class="md:col-span-2 p-8 shadow-inner flex flex-col justify-center text-black" style="background-color: #f8f5eb;">
+
+  <h2 class="text-3xl font-bold mb-4" style="font-family: 'Marko One', sans-serif; color: #5b4a2f;">
+    Esta iniciativa nace con un propósito
+  </h2>
+  <p class="text-lg">
+    Nuestra plataforma nace con el propósito de ser un puente entre personas comprometidas con el cuidado ambiental. Buscamos conectar ideas, proyectos y esfuerzos individuales para construir juntos una comunidad activa, colaborativa y consciente. Cada interacción dentro de este espacio contribuye al crecimiento colectivo y a la creación de un futuro más sostenible.
+  </p>
+</div>
+
+
+
+<!-- Columna derecha: imagen (ocupando 1/3) -->
+<div class="p-8 shadow-inner flex flex-col gap-6 items-center justify-center" style="background-color: #f8f5eb;">
+  <img src="primera.png" alt="Imagen representativa" class="w-64 h-auto rounded-xl shadow-lg">
+</div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Sección de Soluciones -->
+<section id="soluciones" class="py-12 bg-white relative" style="background-color: white;">
+  
+  <!-- Botón arriba a la derecha -->
+  <a href="#navbar" 
+     class="absolute top-10 right-6 text-2xl font-bold text-white 
+            px-3 py-1 rounded-full shadow-md hover:brightness-110 transition"
+     style="background-color: #7b6f58;">
+    ^
+  </a>
+
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-5xl font-bold text-center mb-12" style="color: #5b4a2f; font-family:Marko One, sans-serif;">
+      Soluciones Propuestas
+    </h2>
+
+ <!-- Primera fila con 3 soluciones (antes eran 4) -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+  
+
+    <!-- Solución 1 -->
+    <div class="bg-white p-6 rounded-2xl shadow-md text-center transition-transform transform hover:scale-105 hover:shadow-lg">
+      <i class="fas fa-chalkboard-teacher text-yellow-600 text-5xl mb-4"></i>
+      <h3 class="text-xl font-semibold mb-2" style="font-family:Marko One, sans-serif; color: #2a3c4a;">Educación Accesible</h3>
+      <p class="text-gray-600" style="font-family: 'Poppins', sans-serif; color: #2f2f2f;">
+        Ofrecemos contenido claro, dinámico y fácil de entender sobre sostenibilidad y buenas prácticas ambientales.
+      </p>
+    </div>
+    <!-- Solución 2 -->
+    <div class="bg-white p-6 rounded-2xl shadow-md text-center transition-transform transform hover:scale-105 hover:shadow-lg">
+      <i class="fas fa-users text-blue-600 text-5xl mb-4"></i>
+      <h3 class="text-xl font-semibold mb-2" style="font-family:Marko One, sans-serif; color: #2a3c4a;">Conexión Comunitaria</h3>
+      <p class="text-gray-600" style="font-family: 'Poppins', sans-serif; color: #2f2f2f;">
+        Creamos espacios para unir personas, instituciones y empresas alrededor de la protección del medio ambiente.
+      </p>
+    </div>
+    <!-- Solución 3 -->
+    <div class="bg-white p-6 rounded-2xl shadow-md text-center transition-transform transform hover:scale-105 hover:shadow-lg">
+      <i class="fas fa-lightbulb text-orange-500 text-5xl mb-4"></i>
+      <h3 class="text-xl font-semibold mb-2" style="font-family:Marko One, sans-serif; color: #2a3c4a;">Ecoinnovación y Acción Ambiental</h3>
+      <p class="text-gray-600" style="font-family: 'Poppins', sans-serif; color: #2f2f2f;">
+        Transformamos desafíos ecológicos en oportunidades sostenibles, promoviendo reciclaje, creatividad y participación activa en la comunidad.
+      </p>
+    </div>
+
+
+  </div>
+
+  <!-- Segunda fila con 3 soluciones más -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    
+    <!-- Solución 4 -->
+    <div class="bg-white p-6 rounded-2xl shadow-md text-center transition-transform transform hover:scale-105 hover:shadow-lg">
+      <i class="fas fa-leaf text-green-500 text-5xl mb-4"></i>
+      <h3 class="text-xl font-semibold mb-2" style="font-family:Marko One, sans-serif; color: #2a3c4a;">Conciencia Verde</h3>
+      <p class="text-gray-600" style="font-family: 'Poppins', sans-serif; color: #2f2f2f;">
+        Promovemos una nueva cultura ambiental que conecta a las personas con la naturaleza de manera práctica y real.
+      </p>
+    </div>
+
+    <!-- Solución 5 -->
+    <div class="bg-white p-6 rounded-2xl shadow-md text-center transition-transform transform hover:scale-105 hover:shadow-lg">
+      <i class="fas fa-globe-americas text-indigo-500 text-5xl mb-4"></i>
+      <h3 class="text-xl font-semibold mb-2" style="font-family:Marko One, sans-serif; color: #2a3c4a;">Impacto Global</h3>
+      <p class="text-gray-600" style="font-family: 'Poppins', sans-serif; color: #2f2f2f;">
+        Nuestras acciones locales se multiplican y generan un cambio positivo más allá de Panamá.
+      </p>
+    </div>
+    <!-- Solución 6 -->
+    <div class="bg-white p-6 rounded-2xl shadow-md text-center transition-transform transform hover:scale-105 hover:shadow-lg">
+      <i class="fas fa-universal-access text-purple-600 text-5xl mb-4"></i>
+      <h3 class="text-xl font-semibold mb-2" style="font-family:Marko One, sans-serif; color: #2a3c4a;">Inclusión</h3>
+      <p class="text-gray-600" style="font-family: 'Poppins', sans-serif; color: #2f2f2f;">
+        Diseñamos experiencias adaptadas para que todas las personas puedan participar sin barreras.
+      </p>
+    </div>
+  </div>
+</div>
+</section>
+<!--seccion de monetizacion-->
+<!-- Contenedor gigante de monetización -->
+<div id="contenedor-monetiza" class="w-full py-16 px-6 relative" style="background-color:#f8f5eb;">
+
+  <!-- Botón arriba a la derecha -->
+  <a href="#navbar" 
+     class="absolute top-10 right-6 text-2xl font-bold text-white 
+            px-3 py-1 rounded-full shadow-md hover:brightness-110 transition"
+     style="background-color: #7b6f58;">
+    ^
+  </a>
+
+  <div class="max-w-6xl mx-auto text-center">
+    <!-- Título -->
+    <h2 class="text-4xl font-bold mb-6" style="font-family: 'Marko One', sans-serif; color: #5b4a2f;">
+      Modelo de Monetización Sostenible
+    </h2>
+    <!-- Info -->
+    <p class="text-lg mb-12 max-w-3xl mx-auto" style="font-family: 'Poppins', sans-serif; color: #2f2f2f;">
+      Estos modelos diversificados garantizan ingresos estables y nos permite proyectar un crecimiento sólido, con potencial para expandir nuestros servicios, aumentar alianzas estratégicas y consolidar nuestra posición como referente en soluciones ambientales innovadoras.
+    </p>
+
+    <!-- Tarjetas -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <!-- Marketplace -->
+      <div class="bg-white rounded-2xl shadow-2xl p-6 flex flex-col items-center transition-transform duration-300 transform hover:scale-105 hover:shadow-3xl">
+        <img src="marketplace.svg" alt="Marketplace" class="w-20 h-20 mb-4">
+        <h3 class="text-2xl font-bold mb-2" style="font-family: 'Marko One', sans-serif; color: #4a3c2a;">
+          Marketplace
+        </h3>
+        <p class="text-sm" style="font-family: 'Poppins', sans-serif; color: #2f2f2f;">
+          Conectamos usuarios con tours sostenibles que apoyan la conservación.
+          Mostramos los destinos en recorridos 360° y filtros personalizados, obteniendo un <span class="font-semibold">20% de comisión</span> por cada reserva para el crecimiento de la plataforma.
+        </p>
+      </div>
+
+      <!-- Donaciones -->
+      <div class="bg-white rounded-2xl shadow-2xl p-6 flex flex-col items-center transition-transform duration-300 transform hover:scale-105 hover:shadow-3xl">
+        <img src="donation.png" alt="Donaciones" class="w-20 h-20 mb-4">
+        <h3 class="text-2xl font-bold mb-2" style="font-family: 'Marko One', sans-serif; color: #4a3c2a;">
+          Donaciones
+        </h3>
+        <p class="text-sm" style="font-family: 'Poppins', sans-serif; color: #2f2f2f;">
+          Los usuarios pueden aportar voluntariamente, destinando 40% al desarrollo de Green Leaders y 60% a organizaciones aliadas que protegen el medio ambiente.
+        </p>
+      </div>
+
+      <!-- Premium -->
+      <div class="bg-white rounded-2xl shadow-2xl p-6 flex flex-col items-center transition-transform duration-300 transform hover:scale-105 hover:shadow-3xl">
+        <img src="premiun.png" alt="Premium" class="w-20 h-20 mb-4">
+        <h3 class="text-2xl font-bold mb-2" style="font-family: 'Marko One', sans-serif; color: #4a3c2a;">
+          Premium
+        </h3>
+        <p class="text-sm" style="font-family: 'Poppins', sans-serif; color: #2f2f2f;">
+          Una IA guía a los usuarios en sus proyectos ambientales, ofreciendo recomendaciones personalizadas, pasos a seguir y gráficos que muestran el impacto de sus acciones.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Sección de introducción -->
+<section class="intro-section py-12" data-aos="fade-up">
+  <div class="container mx-auto px-4 text-center">
+    <h1 class="text-5xl font-bold mb-4" style="color:#ffffff; ">Green Leaders</h1>
+    <p class="descripcion text-lg mb-8">
+      Aplicación web que promueve la creación de una <span class="highlight" style="color: #4a3c2a;">comunidad</span> y un estilo de vida <span class="highlight" style="color: #4a3c2a;">sostenible</span>, fomentando la participación activa y la reconexión de las personas motivadas por el deseo de mejorar el ambiente y aprender sobre él.
+    </p>
+  </div>
+</section>
+
+
+
+  </div>
+</section>
+<!--Carrusel de las tecnologias-->
+  <!---->
+<section class="team-section relative" id="equipo" data-aos="fade-up">
+
+  <h2>Tecnologías</h2>
+  <div class="slider-container mt-4">
+    <button class="nav left" onclick="moveSlideAlt(-1)"><i class="fa-solid fa-caret-left"></i></button>
+    <div class="slider-wrapper">
+      <div class="slider" id="slider">
+        <div class="slide"><img src="java.webp" alt="tecnologias utilizadas"><div class="caption">JavaScript</div></div>
+        <div class="slide"><img src="css.png" alt="tecnologias utilizadas"><div class="caption">CSS</div></div>
+        <div class="slide"><img src="html.png" alt="tecnologias utilizadas"><div class="caption">HTML</div></div>
+        <div class="slide"><img src="python.webp" alt="tecnologias utilizadas"><div class="caption">PYTHON</div></div>
+        <div class="slide"><img src="php.png" alt="tecnologias utilizadas"><div class="caption">PHP</div></div>
+        <div class="slide"><img src="flask.png" alt="tecnologias utilizadas"><div class="caption">Flask</div></div>
+        <div class="slide"><img src="Dash.png" alt="tecnologias utilizadas"><div class="caption">Dash</div></div>
+        <div class="slide"><img src="react.png" alt="tecnologias utilizadas"><div class="caption">ReactJs</div></div>
+        <div class="slide"><img src="tailwind.png" alt="tecnologias utilizadas"><div class="caption">Tailwind</div></div>
+        <div class="slide"><img src="userway.png" alt="tecnologias utilizadas"><div class="caption">UserWay</div></div>
+        <div class="slide"><img src="libretranslate.png" alt="tecnologias utilizadas"><div class="caption">LibreTranslate</div></div>
+      </div>
+    </div>
+    <button class="nav right" onclick="moveSlideAlt(1)"><i class="fa-solid fa-caret-right"></i></button>
+  </div>
+</section>
+
+
+
+  <!-- Scripts -->
+<!--para que se pase automatico-->
+<script>
+  const rightBtn = document.querySelector('#equipo .nav.right');
+  const leftBtn = document.querySelector('#equipo .nav.left');
+  const totalSlides = document.querySelectorAll('#slider .slide').length;
+  let currentIndex = 0;
+  let forward = true;
+
+  setInterval(() => {
+    if(forward){
+      rightBtn.click();
+      currentIndex++;
+      if(currentIndex >= totalSlides - 1) forward = false; // invierte al final
+    } else {
+      leftBtn.click();
+      currentIndex--;
+      if(currentIndex <= 0) forward = true; // invierte al inicio
+    }
+  }, 3000);
+</script>
+
+
+
+<!-- Funcionalidades -->
+<section class="info-section relative" id="funcionalidades" data-aos="fade-right">
+
+  <!-- Botón arriba a la derecha -->
+  <a href="#navbar" 
+     class="absolute top-10 right-6 text-2xl font-bold text-white 
+            px-3 py-1 rounded-full shadow-md hover:brightness-110 transition"
+     style="background-color: #7b6f58;">
+    ^
+  </a>
+
+  <div id="funcionalidades" class="texto">
+    <h2>Funcionalidades principales</h2>
+    <ul>
+      <li><i class="fas fa-check" style="color: #4CAF50; margin-right: 0.5rem;"></i><span class="highlight">Tours ecológicos 360º</span> para exploración virtual y presencial de sitios ambientales.</li>
+      <li><i class="fas fa-check" style="color: #4CAF50; margin-right: 0.5rem;"></i><span class="highlight">Ubicación exacta</span> de puntos ambientales claves en un mapa.</li>
+      <li><i class="fas fa-check" style="color: #4CAF50; margin-right: 0.5rem;"></i><span class="highlight">Foro de discusión</span> para fomentar la participación activa.</li>
+      <li><i class="fas fa-check" style="color: #4CAF50; margin-right: 0.5rem;"></i><span class="highlight">Calendario dinámico</span> con eventos y organizaciones participantes.</li>
+      <li><i class="fas fa-check" style="color: #4CAF50; margin-right: 0.5rem;"></i><span class="highlight">IA</span> que guía proyectos y calcula su impacto real.</li>
+      <li><i class="fas fa-check" style="color: #4CAF50; margin-right: 0.5rem;"></i><span class="highlight">Herramienta de accesibilidad</span> para usuarios con discapacidades.</li>
+      <li><i class="fas fa-check" style="color: #4CAF50; margin-right: 0.5rem;"></i><span class="highlight">Información actualizada</span> sobre problemas ambientales.</li>
+    </ul>
+  </div>
+
+  <div class="imagen">
+    <img src="funcion.png" alt="Funcionalidades">
+  </div>
+</section>
+
+<section id="video-greenleaders" class="flex flex-col items-center p-8 bg-gray-100" style="background-color: white;">
+  <h2 class="text-5xl font-bold mb-6 text-center"  style="color: #5b4a2f; font-family: Marko One, sans-serif;">Descubre más sobre Green Leaders</h2>
+  
+  <div class="w-full max-w-5xl aspect-video">
+    <video controls class="w-full h-full rounded-lg shadow-lg">
+      <source src="GreenLeaders.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </div>
+
+  <!-- Frase llamativa -->
+  <p class="mt-6 text-lg text-center text-gray-700">
+     ¡Explora la aplicación completa y sé parte del cambio!
+  </p>
+
+  <!-- Botón invitación -->
+  <a href="tu-pagina.html" target="_blank"
+     class="mt-6 bg-green-600 hover:bg-green-700 text-white font-bold 
+            px-10 py-4 text-xl rounded-full shadow-2xl 
+            transition transform hover:scale-110 hover:shadow-green-500/50 
+            animate-bounce">
+     Ir a Green Leaders
+  </a>
+</section>
+
+
+
+<!-- Proyecto -->
+
+<!-- Sección combinada: Misión y Visión -->
+<section id="sobre-nosotros" class="py-12 relative">
+  <!-- Botón arriba a la derecha -->
+  <a href="#navbar" 
+     class="absolute top-10 right-6 text-2xl font-bold text-white 
+            px-3 py-1 rounded-full shadow-md hover:brightness-110 transition"
+     style="background-color: #7b6f58;">
+    ^
+  </a>
+
+  <div class="container mx-auto px-4">
+    <!-- Título superior -->
+    <div class="text-center mb-12">
+      <h2 class="text-5xl font-bold" style="font-family: 'Marko One', sans-serif; color: #5b4a2f;">
+        Sobre Nosotros
+      </h2>
+    </div>
+    
+    <!-- Imagen centrada y más grande -->
+    <div class="imagen">
+      <img src="grupal.jpg" alt="Equipo Green Leaders" class="mx-auto w-3/4 h-auto rounded-lg shadow-lg">
+    </div>
+    <br>
+    <br>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      <!-- Columna izquierda: Misión -->
+      <div id="mision" class="flex flex-col gap-4">
+        <!-- Texto -->
+        <div style="background-color: #f8f5eb;" class="p-6 shadow-inner flex flex-col justify-center text-black relative">
+          <!-- Flecha derecha -->
+
+          <h2 class="text-3xl font-bold mb-4" style="color: #2a3c4a;">Misión</h2>
+          <p class="text-lg">
+            Nuestra misión es formar <span class="highlight">líderes escolares</span> capaces de ejecutar soluciones sostenibles para enfrentar problemas ambientales locales como la <span class="highlight">contaminación</span>, la <span class="highlight">deforestación</span> y el <span class="highlight">cambio climático</span>.
+          </p>
+        </div>
+
+        <!-- Imagen -->
+        <div style="background-color: #eef7f0;" class="p-6 shadow-inner flex items-center justify-center">
+          <img src="mision.jpg" alt="Misión" class="imagen-fija">
+        </div>
+      </div>
+
+      <!-- Columna derecha: Visión -->
+      <div class="flex flex-col gap-4">
+        <!-- Texto -->
+        <div style="background-color: #eef7f0;" class="p-6 shadow-inner flex flex-col justify-center text-black">
+          <h2 class="text-3xl font-bold mb-4" style="color: #2a3c4a;">Visión</h2>
+          <p class="text-lg">
+            Ser la <span class="highlight">red educativa ambiental</span> más activa y conectada de Panamá, ayudando a los estudiantes a tomar acción y comprendiendo la importancia de la <span class="highlight">conservación del medio ambiente</span>.
+          </p>
+        </div>
+        <!-- Imagen -->
+        <div style="background-color: #f8f5eb;" class="p-6 shadow-inner flex items-center justify-center">
+          <img src="vision.jpg" alt="Visión" class="imagen-fija">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Tecnologías y carrusel -->
+<section class="devs-section relative" id="tecnologias" data-aos="fade-up">
+  <!-- Flecha arriba derecha -->
+
+  <h2>Team desarrollador</h2>
+  <div class="carousel-container">
+    <button class="nav left" onclick="moveSlide(-1)"><i class="fa-solid fa-caret-left"></i></button>
+    <div class="carousel-wrapper">
+      <div class="carousel" id="carousel">
+        <div class="card"><img src="lorena.jpg" alt="Miembros del equipo"><div class="caption">Lorena Castillo</div></div>
+        <div class="card"><img src="scarlett.JPG" alt="Miembros del equipo"><div class="caption">Scarlett Sumner</div></div>
+        <div class="card"><img src="luis.jfif" alt="Miembros del equipo"><div class="caption">Luis Araúz</div></div>
+        <div class="card"><img src="dashlyn.jfif" alt="Miembros del equipo"><div class="caption">Dashlyn Castro</div></div>
+        <div class="card"><img src="ivaneska.JPG" alt="Miembros del equipo"><div class="caption">Ivaneska Camargo</div></div>
+        <div class="card"><img src="maylen.JPG" alt="Miembros del equipo"><div class="caption">Maylen González</div></div>
+        <div class="card"><img src="oris.JPG" alt="Miembros del equipo"><div class="caption">Oris Batista</div></div>
+        <div class="card"><img src="yelenis.JPG" alt="Miembros del equipo"><div class="caption">Yelenys Zambrano</div></div>
+        <div class="card"><img src="marianys.JPG" alt="Miembros del equipo"><div class="caption">Marianys Alaín</div></div>
+      </div>
+    </div>
+    <button class="nav right" onclick="moveSlide(1)"><i class="fa-solid fa-caret-right"></i></button>
+  </div>
+</section>
+
+
+<script>
+const carousel = document.getElementById("carousel");
+let centerIndex = 0;
+
+function updateCarousel() {
+  const cards = document.querySelectorAll(".carousel .card");
+  const total = cards.length;
+
+  // Resetear clases y opacidad
+  cards.forEach(card => {
+    card.classList.remove("center","left","right");
+    card.style.opacity = "0";
+  });
+
+  // Card central
+  if(cards[centerIndex]){
+    cards[centerIndex].classList.add("center");
+    cards[centerIndex].style.opacity = "1";
+  }
+
+  // Cards izquierda y derecha
+  if(cards[centerIndex-1]){
+    cards[centerIndex-1].classList.add("left");
+    cards[centerIndex-1].style.opacity = "1";
+  }
+  if(cards[centerIndex+1]){
+    cards[centerIndex+1].classList.add("right");
+    cards[centerIndex+1].style.opacity = "1";
+  }
+
+  // Calcular desplazamiento centrado
+  const cardWidth = cards[0].offsetWidth + 30; // ancho + gap
+  const totalWidth = cardWidth * total;
+  const containerWidth = carousel.parentElement.offsetWidth;
+  const offset = (containerWidth / 2) - (cardWidth / 2) - (centerIndex * cardWidth);
+  carousel.style.transform = `translateX(${offset}px)`;
+}
+
+function moveSlide(dir){
+  const cards = document.querySelectorAll(".carousel .card");
+  centerIndex += dir;
+
+  if(centerIndex < 0) centerIndex = 0;
+  if(centerIndex >= cards.length) centerIndex = cards.length - 1;
+
+  updateCarousel();
+}
+
+// Esperar que cargue todo el DOM
+window.addEventListener("DOMContentLoaded", updateCarousel);
+window.addEventListener("resize", updateCarousel);
+</script>
+
+<!-- Sección de Valores Sociales -->
+<section id="valores-sociales" class="bg-white py-12 px-6">
+  <div class="max-w-6xl mx-auto text-center mb-10">
+    <h2 class="text-5xl font-bold" style="font-family: 'Marko One', sans-serif; color: #5b4a2f;">
+      Valores Sociales
+    </h2>
+    <p class="text-sm mt-2" style="font-family: 'Poppins', sans-serif; color: black;">
+      Principios que guían la interacción y el impacto social dentro de Green Leaders.
+    </p>
+  </div>
+
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+
+    <!-- Valor 1 -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center transition-transform duration-300 transform hover:scale-105 hover:shadow-2xl">
+      <i class="fas fa-users text-green-600 text-5xl mb-4"></i>
+      <h3 class="text-2xl font-bold mb-2 text-center" style="font-family: 'Marko One', sans-serif; color: #2a3c4a;">
+        Conexión Comunitaria
+      </h3>
+      <p class="text-sm leading-relaxed text-center" style="font-family: 'Poppins', sans-serif; color: #2f2f2f;">
+        Fomentamos la colaboración entre personas, escuelas y organizaciones para generar impacto colectivo.
+      </p>
+    </div>
+
+    <!-- Valor 2 -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center transition-transform duration-300 transform hover:scale-105 hover:shadow-2xl">
+      <i class="fas fa-star text-green-600 text-5xl mb-4"></i>
+      <h3 class="text-2xl font-bold mb-2 text-center" style="font-family: 'Marko One', sans-serif; color: #2a3c4a;">
+        Empoderamiento Social
+      </h3>
+      <p class="text-sm leading-relaxed text-center" style="font-family: 'Poppins', sans-serif; color: #2f2f2f;">
+        Convertimos a cada usuario en un líder de cambio, con herramientas para organizar acciones y generar impacto real.
+      </p>
+    </div>
+
+    <!-- Valor 3 -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center transition-transform duration-300 transform hover:scale-105 hover:shadow-2xl">
+      <i class="fas fa-universal-access text-green-600 text-5xl mb-4"></i>
+      <h3 class="text-2xl font-bold mb-2 text-center" style="font-family: 'Marko One', sans-serif; color: #2a3c4a;">
+        Inclusión y Equidad
+      </h3>
+      <p class="text-sm leading-relaxed text-center" style="font-family: 'Poppins', sans-serif; color: #2f2f2f;">
+        Garantizamos que todas las personas puedan participar, sin importar su habilidad o ubicación.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({duration: 1000});
+  </script>
+  <script>
+const slider = document.getElementById("slider");
+let centerIndexAlt = 0;
+
+function updateSlider() {
+  const slides = document.querySelectorAll(".slider .slide");
+  const total = slides.length;
+
+  // Resetear clases y opacidad
+  slides.forEach(slide => {
+    slide.classList.remove("center","left","right");
+    slide.style.opacity = "0";
+  });
+
+  // Slide central
+  if(slides[centerIndexAlt]){
+    slides[centerIndexAlt].classList.add("center");
+    slides[centerIndexAlt].style.opacity = "1";
+  }
+
+  // Slides izquierda y derecha
+  if(slides[centerIndexAlt-1]) {
+    slides[centerIndexAlt-1].classList.add("left");
+    slides[centerIndexAlt-1].style.opacity = "1";
+  }
+  if(slides[centerIndexAlt+1]) {
+    slides[centerIndexAlt+1].classList.add("right");
+    slides[centerIndexAlt+1].style.opacity = "1";
+  }
+
+  // Calcular desplazamiento centrado
+  const slideWidth = slides[0].offsetWidth + 30; // ancho + gap
+  const visibleSlides = 3; // cantidad visible a la vez
+  const sliderWidth = slideWidth * total; // ancho total del slider
+  const containerWidth = slider.parentElement.offsetWidth; // ancho del wrapper
+
+  // translateX: centro del contenedor menos posición del slide central
+  const offset = (containerWidth / 2) - (slideWidth / 2) - (centerIndexAlt * slideWidth);
+  slider.style.transform = `translateX(${offset}px)`;
+}
+
+function moveSlideAlt(dir){
+  const slides = document.querySelectorAll(".slider .slide");
+  centerIndexAlt += dir;
+
+  if(centerIndexAlt < 0) centerIndexAlt = 0;
+  if(centerIndexAlt >= slides.length) centerIndexAlt = slides.length - 1;
+
+  updateSlider();
+}
+
+window.onload = updateSlider;
+window.onresize = updateSlider; // recalcula si cambias tamaño de pantalla
+</script>
+
+
+<!--fin del carrusel de las tecnologias-->
+
+<!--fin del cuerpo de la pagina-->
+<footer id="pageFooter" class="text-white py-16 px-6 relative">
+
+  <!-- Fondo con imagen -->
+  <div class="absolute inset-0 z-0">
+    <img src="nueva3.png" alt="Fondo Footer" class="w-full h-full object-cover object-top">
+    <div class="absolute inset-0 bg-black bg-opacity-25"></div> <!-- Overlay más suave -->
+  </div>
+
+  <!-- Contenido del footer -->
+    <div class="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-10 mt-12">
+  <!-- Aquí agregamos mt-8 para bajar todo -->
+
+    <!-- Sección de textos -->
+    <div class="flex flex-col gap-6">
+      <!-- WE ARE -->
+      <div>
+        <h3 class="text-xl md:text-2xl font-bold mb-2">WE ARE</h3>
+        <ul class="space-y-2 text-lg md:text-xl">
+          <li><i class="fas fa-user mr-2"></i><a href="#">Stellaris Nova</a></li>
+          <li><i class="fas fa-map-marker-alt mr-2"></i><a href="#">42FM+4J Canto del Llano</a></li>
+        </ul>
+      </div>
+
+      <!-- ABOUT US -->
+      <div>
+        <h3 class="text-xl md:text-2xl font-bold mb-2">ABOUT US</h3>
+        <ul class="space-y-2 text-lg md:text-xl">
+          <li><i class="fab fa-instagram mr-2"></i><a href="https://www.instagram.com/stellaris.nova25?igsh=dzZvMXJxNG94NTZz">Instagram</a></li>
+          <li><a href="http://localhost/EXPO_2025/Pagina_principal2025/mas_info/mas_informacion.html">Más información</a></li>
+          <li><a href="http://localhost/EXPO_2025/Pagina_principal2025/politicas/politicas.html">Políticas</a></li>
+        </ul>
+      </div>
+    </div>
+
+<!-- Botón delineado -->
+<div class="flex md:items-start justify-start md:justify-end mt-40 md:mt-40">
+  <a href="http://localhost/EXPO_2025/Pagina_principal2025/green_leaders.html"
+     class="border-2 border-green-600 text-white-600 text-xl md:text-2xl px-8 py-3 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,197,94,0.7)] hover:brightness-110 animate-pulse-slow">
+    Conoce Green Leaders
+  </a>
+</div>
+
+<style>
+  /* Animación pulsante lenta */
+  @keyframes pulse-slow {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 2s infinite;
+  }
+</style>
+
+
+  </div>
+
+  <!-- Botón volver arriba -->
+<button id="scrollToTopBtn" title="Volver arriba">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+<script>
+  const btn = document.getElementById("scrollToTopBtn");
+  const footer = document.getElementById("pageFooter");
+
+  // Mostrar botón solo cuando el footer es visible
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        btn.style.display = "block"; // Mostrar botón
+      } else {
+        btn.style.display = "none";  // Ocultar botón
+      }
+    });
+  }, {threshold: 0.1});
+
+  observer.observe(footer);
+
+  // Scroll suave hacia arriba al hacer clic
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
+
+</footer>
+
+
+<!-- Script UserWay antes de cerrar body -->
+
+<script src="https://cdn.userway.org/widget.js" data-account="gXxbW5X3dH"></script>
+</body>
+<!-- fin del footer -->
+</html>
